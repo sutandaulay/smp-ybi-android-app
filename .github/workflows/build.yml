@@ -1,0 +1,27 @@
+name: Build SMP YBI Android App
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Build Android APK & AAB
+      uses: cezaraugusto/twa-build-action@v1
+      with:
+        url: https://smpbhaktiinsanibogor.sch.id/app
+        name: "SMP YBI Bogor"
+        packageId: "com.ybi.smp.bogor"
+        launcherIcon: "SMP YBI.png"
+        splashScreenFadeOutDuration: 300
+        backgroundColor: "#FFFFFF"
+        statusBarColor: "#FFFFFF"
+        fullScreen: true
+        generateAab: true
